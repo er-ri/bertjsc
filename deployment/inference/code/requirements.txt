@@ -1,0 +1,6 @@
+https://github.com/er-ri/bertjsc/archive/refs/tags/v1.0.0.tar.gz
+transformers
+fugashi
+ipadic
+sentencepiece
+pytorch-lightning

@@ -1,0 +1,13 @@
+fugashi==1.2.0
+ipadic==1.0.0
+mecab-python3==1.0.5
+pandas==1.4.4
+pytorch-lightning==1.8.6
+scikit-learn==1.1.2
+torch==1.13.1
+tqdm==4.64.1
+ujson==5.4.0
+unidic-lite==1.0.8
+sentencepiece==0.1.97
+transformers==4.24.0
+tensorboard==2.12.0
