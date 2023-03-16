@@ -3,7 +3,7 @@ import torch
 
 from transformers import BertJapaneseTokenizer
 
-from bertjsc import predict_with_json_result
+from bertjsc import predict_of_json
 from bertjsc.lit_model import LitBertForMaskedLM
 
 MODEL_CARD = "cl-tohoku/bert-base-japanese-whole-word-masking"
@@ -38,7 +38,7 @@ def predict_fn(input_object, model):
     """
     Apply model to the incoming request
     """
-    prediction = predict_with_json_result(model, tokenizer, device, input_object)
+    prediction = predict_of_json(model, tokenizer, device, input_object)
 
     return prediction
 
