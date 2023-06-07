@@ -6,8 +6,7 @@ pytorch-lightning==1.8.6
 scikit-learn==1.1.2
 torch==1.13.1
 tqdm==4.64.1
-ujson==5.4.0
 unidic-lite==1.0.8
 sentencepiece==0.1.97
-transformers==4.24.0
+transformers==4.29.2
 tensorboard==2.12.0

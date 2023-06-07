@@ -6,17 +6,29 @@ The project, fine-tuned the Masked-Language BERT for the task of Japanese Spelli
 
 ## Getting Started
 1. Clone the project and install necessary packages.
-```
     pip install -r requirements.txt
-```
-2. Download the [train dataset](https://nlp.ist.i.kyoto-u.ac.jp/EN/edit.php?JWTD) and put it to `./dataset/jwtd_v1.0/`.
-3. Run `python scripts/trainer.py`. The file describes the steps for the training process and includes a function to calculate model's performance metrics.
-4. After the training, invoke the model by the following code.
+2. Download the trained model from [here](https://drive.google.com/file/d/1SiRPOnjoDfK-N2sTEBUlGX22vVo4Pif1/view?usp=sharing) and put it to an arbitrary directory.
+3. Make a inference by the following code.
 ```python
+    import torch
+    from transformers import BertJapaneseTokenizer
+    from bertjsc.lit_model import LitBertForMaskedLM
+
+    # Tokenizer & Model declaration.
+    tokenizer = BertJapaneseTokenizer.from_pretrained("cl-tohoku/bert-base-japanese-whole-word-masking")
+    model = LitBertForMaskedLM("cl-tohoku/bert-base-japanese-whole-word-masking")
+
+    # Load the model downloaded in Step 2. 
+    model.load_state_dict(torch.load('load/from/path/lit-bert-for-maskedlm-230112.pth'))
+
+    # Set computing device on GPU if available, else CPU
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+    # Inference
     result = predict_of_json(model, tokenizer, device, "日本語校正してみす。")
-    print(result)
+    print(result) 
 ```
-* Where `device` is the computing device. The following block shows the prediction result.
+4. A json style result will be displayed as below.
 ```json
 {
     0: {'token': '日本語', 'score': 0.999341},
@@ -29,18 +41,19 @@ The project, fine-tuned the Masked-Language BERT for the task of Japanese Spelli
     7: {'token': '。', 'score': 1.0}
 }
 ```
+* For training the model from scratch, you need to download the training data from [here](https://nlp.ist.i.kyoto-u.ac.jp/EN/edit.php?JWTD). The file(`./scripts/trainer.py`) contains the steps for the training process and includes a function to evaluate model's performance. You may refer the file to perform your task on GPU cloud computing platform like `AWS SageMaker` or `Google Colab`.
 
 ## Evaluation
 ### Detection
 | Model | Accuracy | Precision | Recall | F1 Score |
-|-------|----------|-----------|--------|----------|
+|---|---|---|---|---|
 | Pre-train   |   43.5   |   31.9   |   41.5   |   36.1   |
 | Fine-tune   |   77.3   | **71.1** |   81.2   | **75.8** |
 | Soft-masked | **78.4** |   65.3   | **88.4** |   75.1   |
 
 ### Correction
 | Model | Accuracy | Precision | Recall | F1 Score |
-|-------|----------|-----------|--------|----------|
+|---|---|---|---|---|
 | Pre-train   |   37.0   |   19.0   |   29.8   |   23.2   |
 | Fine-tune   |   74.9   | **66.4** |   80.1   | **72.6** |
 | Soft-masked | **76.4** |   61.4   | **87.8** |   72.2   |
