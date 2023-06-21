@@ -9,7 +9,7 @@ The project, fine-tuned the Masked-Language BERT for the task of Japanese Spelli
 ## Getting Started
 1. Clone the project and install necessary packages.  
     pip install -r requirements.txt
-2. Download the fine-tuned model(BERT) from [here](https://drive.google.com/file/d/1SiRPOnjoDfK-N2sTEBUlGX22vVo4Pif1/view?usp=sharing) and put it to an arbitrary directory.
+2. Download the fine-tuned model(BERT) from [here](https://drive.google.com/file/d/1IVcwz70GWWpOfJNG-Jm4jKjA9ObcrHJY/view?usp=sharing) and put it to an arbitrary directory.
 3. Make a inference by the following code.
 ```python
     import torch
@@ -22,7 +22,7 @@ The project, fine-tuned the Masked-Language BERT for the task of Japanese Spelli
     model = LitBertForMaskedLM("cl-tohoku/bert-base-japanese-whole-word-masking")
 
     # Load the model downloaded in Step 2. 
-    model.load_state_dict(torch.load('load/from/path/lit-bert-for-maskedlm-230112.pth'))
+    model.load_state_dict(torch.load('load/from/path/lit-bert-for-maskedlm-230313.pth'))
 
     # Set computing device on GPU if available, else CPU
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -45,10 +45,13 @@ The project, fine-tuned the Masked-Language BERT for the task of Japanese Spelli
 }
 ```
 * For training the model from scratch, you need to download the training data from [here](https://nlp.ist.i.kyoto-u.ac.jp/EN/edit.php?JWTD). The file(`./scripts/trainer.py`) contains the steps for the training process and includes a function to evaluate model's performance. You may refer the file to perform your task on GPU cloud computing platform like `AWS SageMaker` or `Google Colab`.
-* For using `Soft-Masked BERT`, download the fine-tuned model from [here](https://drive.google.com/file/d/1uZQWq4gNszhmpFijNGHY8DB9ppuzHS7t/view?usp=sharing), declare the model as following code. The other usages are the same.
+* For using `Soft-Masked BERT`, download the fine-tuned model from [here](https://drive.google.com/file/d/1uZQWq4gNszhmpFijNGHY8DB9ppuzHS7t/view?usp=sharing), declare the model as the following code. The other usages are the same.
 ```python
-from bertjsc.lit_model import LitSoftMaskedBert
-model = LitSoftMaskedBert("cl-tohoku/bert-base-japanese-whole-word-masking", tokenizer.mask_token_id, tokenizer.vocab_size)
+    from transformers import BertJapaneseTokenizer
+    from bertjsc.lit_model import LitSoftMaskedBert
+    
+    tokenizer = BertJapaneseTokenizer.from_pretrained("cl-tohoku/bert-base-japanese-whole-word-masking")
+    model = LitSoftMaskedBert("cl-tohoku/bert-base-japanese-whole-word-masking", tokenizer.mask_token_id, tokenizer.vocab_size)
 ```
 
 ## Evaluation
