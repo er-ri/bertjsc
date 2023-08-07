@@ -54,6 +54,9 @@ The project, fine-tuned the Masked-Language BERT for the task of Japanese Spelli
     model = LitSoftMaskedBert("cl-tohoku/bert-base-japanese-whole-word-masking", tokenizer.mask_token_id, tokenizer.vocab_size)
 ```
 
+### Note
+* Downgrade `transformers` to 4.29.2 or add the parameter `strict=False` for `model.load_state_dict()` if you encountered the error of **Unexpected key(s) in state_dict: "mlbert.bert.embeddings.position_ids".**
+
 ## Evaluation
 ### Detection
 | Model | Accuracy | Precision | Recall | F1 Score |
