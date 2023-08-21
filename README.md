@@ -22,7 +22,7 @@ The project, fine-tuned the Masked-Language BERT for the task of Japanese Spelli
     model = LitBertForMaskedLM("cl-tohoku/bert-base-japanese-whole-word-masking")
 
     # Load the model downloaded in Step 2. 
-    model.load_state_dict(torch.load('load/from/path/lit-bert-for-maskedlm-230313.pth'))
+    model.load_state_dict(torch.load('load/from/path/lit-bert-for-maskedlm-230313.pth'), strict=False)
 
     # Set computing device on GPU if available, else CPU
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')

@@ -17,7 +17,7 @@ def model_fn(model_dir):
     """
     model = LitBertForMaskedLM(MODEL_CARD)
     with open(os.path.join(model_dir, 'lit-bert-for-maskedlm-230126.pth'), 'rb') as f:
-        model.load_state_dict(torch.load(f))
+        model.load_state_dict(torch.load(f), strict=False)
     model.eval()
     return model.to(device)
 
