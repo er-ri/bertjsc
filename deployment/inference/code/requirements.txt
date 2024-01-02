@@ -1,5 +1,5 @@
 https://github.com/er-ri/bertjsc/archive/refs/tags/v1.0.0.tar.gz
-transformers~>4.30.0
+transformers>=4.36.0
 fugashi==1.2.0
 ipadic==1.0.0
 sentencepiece==0.1.97

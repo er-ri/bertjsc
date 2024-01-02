@@ -8,5 +8,5 @@ torch==1.13.1
 tqdm==4.64.1
 unidic-lite==1.0.8
 sentencepiece==0.1.97
-transformers~>4.30.0
+transformers>=4.36.0
 tensorboard==2.12.0
