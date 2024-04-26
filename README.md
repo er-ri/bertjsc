@@ -64,6 +64,7 @@ The project, fine-tuned the Masked-Language BERT for the task of Japanese Spelli
 | Pre-train   |   43.5   |   31.9   |   41.5   |   36.1   |
 | Fine-tune   |   77.3   | **71.1** |   81.2   | **75.8** |
 | Soft-masked | **78.4** |   65.3   | **88.4** |   75.1   |
+| RoBERTa     |   72.3   |   55.9   |   83.2   |   66.9   |
 
 ### Correction
 | Model | Accuracy | Precision | Recall | F1 Score |
@@ -71,6 +72,8 @@ The project, fine-tuned the Masked-Language BERT for the task of Japanese Spelli
 | Pre-train   |   37.0   |   19.0   |   29.8   |   23.2   |
 | Fine-tune   |   74.9   | **66.4** |   80.1   | **72.6** |
 | Soft-masked | **76.4** |   61.4   | **87.8** |   72.2   |
+| RoBERTa     |   69.7   |   50.7   |   81.8   |   62.7   |
+
 * Training Platform: *AWS SageMaker Lab*
 * Batch Size: *32*
 * Epoch: *6*

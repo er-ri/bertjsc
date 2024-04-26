@@ -1,2 +1,3 @@
 from .bert_masked_language import LitBertForMaskedLM
 from .soft_masked_bert import LitSoftMaskedBert
+from .roberta_masked_language import LitRobertaForMaskedLM
