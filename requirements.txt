@@ -3,7 +3,7 @@ ipadic==1.0.0
 mecab-python3==1.0.9
 pandas==2.2.2
 pytorch-lightning==2.2.3
-scikit-learn==1.4.2
+scikit-learn==1.5.0
 torch==2.3.0
 tqdm==4.66.3
 unidic-lite==1.0.8
